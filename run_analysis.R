@@ -50,7 +50,7 @@ names(dataset)<-gsub("gravity","Gravity",names(dataset))
 
 averagedata<-group_by(dataset,Subject,Activity)
 averagedata<-summarise_all(averagedata,list(mean))
-write.table(averagedata,"AverageData.txt")
+write.table(averagedata,"AverageData.txt",row.name=FALSE)
 
 # Preview data
 View(averagedata)
