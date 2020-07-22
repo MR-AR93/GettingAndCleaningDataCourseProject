@@ -1,0 +1,83 @@
+Code Book
+=========
+
+The data required for the project is downloaded directly by clicking the link given : 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'.
+The file is then manually extracted.
+
+Merge subject
+=============
+
+The subject consists of 30 volunteers, which has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
+ 
+'subject_test.txt'  - Range from 1 to 30, identifying the volunteers who performed the activity of each window sample.
+'subject_train.txt' - Range from 1 to 30, identifying the volunteers who performed the activity of each window sample.
+'subject'           - Created by merging both subject data into one.
+
+Merge training and test set
+===========================
+
+'features.txt' - List of all features.
+'X_test.txt'   - Test set, column names is updated according to all of the features listed in 'features.txt'.
+'X_train.txt'  - Training set, column names is updated according to all of the features listed in 'features.txt'.
+'x'            - Created by merging both set data into one.
+
+Merge training and test labels
+==============================
+
+'activity_labels.txt' - Links the class labels with their activity name.
+'y_test.txt'          - Test labels.
+'y_train.txt'         - Training labels.
+'y'                   - Created by merging both labels data into one.
+
+Merges the training and the test sets to create one data set
+============================================================
+
+'dataset' - created by merging 'subject','y',and 'x'.
+
+Extracts only the measurements on the mean and standard deviation for each measurement
+======================================================================================
+
+'dataset' is updated by selecting necessary data, which is the mean and standard deviation.
+
+Uses descriptive activity names to name the activities in the data set
+======================================================================
+
+'id' data column in 'dataset' is appropriately named by linking the activity name  in 'activity_labels.txt' according to id(1-6). 
+
+Tidy data set
+=============
+
+'dataset' is reorganised to make it presentable by arranging according to 'Subject'(ascending), followed by 'id'.
+
+Appropriately labels the data set with descriptive variable names
+=================================================================
+
+In 'dataset':
+'id'       rename to 'Activity'.
+'t'        rename to 'Time'.
+'f'        rename to 'Frequency'.
+'angle'    rename to 'Angle'.
+'Acc'      rename to 'Accelerometer'.
+'Gyro'     rename to 'Gyroscope'.
+'Mag'      rename to 'Magnitude'.
+'BodyBody' rename to 'Body'.
+'mean()'   rename to 'Mean'.
+'std()'    rename to 'Standard Deviation'.
+'Freq()'   rename to 'Frequency'.
+'gravity'  rename to 'Gravity'.
+
+From the 'dataset' in previous step, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+=====================================================================================================================================================
+
+To get average of each variable for each activity and each subject, 'averagedata' is created by grouping 'dataset' by 'Subject' and 'Activity'.
+'averagedata' is then summarised ('summarise_all' to affect every variable) by 'mean' to get the average.
+'averagedata' is then saved as 'AverageData.txt'.
+
+Preview data
+============
+
+'View()'                    to view full data.
+'head(tibble::as_tibble())' to view first six row of data, including class of each column and column name.
+'tail(tibble::as_tibble())' to view last six row of data, including class of each column and column name.
+'summary()'                 to view length of character, minimum, maximum and quantile of each data in column.
+'str()'                     to view details of data (dimension,class,column names).
